@@ -1,0 +1,57 @@
+
+server:
+  port: 8085
+# 应用名称：client
+spring:
+  application:
+    name: client
+  thymeleaf:
+    #prefix：指定模板所在的目录
+    prefix: classpath:/templates/
+    #check-tempate-location: 检查模板路径是否存在
+    check-template-location: true
+    #cache: 是否缓存，开发模式下设置为false，避免改了模板还要重启服务器，线上设置为true，可以提高性能。
+    cache: false
+    suffix:  .html
+    encoding: UTF-8
+    mode: HTML5
+    #    数据源
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://47.111.73.225:3306/ssm?serverTimezone=Asia/Shanghai
+    username: root
+    password: root123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      initial-size: 5
+      max-active: 5
+# 注册到我们本地的eureka注册中心，端口是8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+
+xzw:
+  name: 熊志伟
+  age: 11
+
+webaspect:
+  isInsertDb: true
+exceptionhandler:
+  isInsertDb: true
+#mybatis
+mybatis:
+  #  mybatis Sql语句目录
+  mapper-locations: classpath:mapper/*.xml
+  #  mybatis配置文件目录
+#  config-location: classpath:mybatis/mybatis-config.xml
+
+#日志配置
+#logging:
+#  config:  classpath:log/logback.xml
+
+

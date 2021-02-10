@@ -1,0 +1,22 @@
+server:
+  port: 8082
+# 应用名称
+spring:
+  application:
+    name: orderOut
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:sqlserver://localhost:1433;DatabaseName=ckdata
+    username: sa
+    password: root123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    druid:
+      initial-size: 5
+      max-active: 5
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+  instance:
+    prefer-ip-address: true
