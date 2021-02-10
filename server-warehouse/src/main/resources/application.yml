@@ -1,10 +1,10 @@
 
 server:
   port: 8085
-# Ó¦¸ÃÃû³Æ
+# åº”è¯¥åç§°
 spring:
   application:
-    name: orderIn
+    name: warehouse
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:sqlserver://localhost:1433;DatabaseName=ckdata
@@ -28,9 +28,9 @@ mybatis-plus:
     db-config:
       id-type: auto
       field-strategy: not_empty
-      #ÍÕ·åÏÂ»®Ïß×ª»»
+      #é©¼å³°ä¸‹åˆ’çº¿è½¬æ¢
       column-underline: true
-      #Âß¼­É¾³ıÅäÖÃ
+      #é€»è¾‘åˆ é™¤é…ç½®
       logic-delete-value: 0
       logic-not-delete-value: 1
       db-type: mssql
@@ -38,3 +38,4 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

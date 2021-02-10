@@ -12,7 +12,7 @@
     <artifactId>server-order-in</artifactId>
     <version>1.0</version>
     <name>server-order-in</name>
-    <description>Demo project for Spring Boot</description>
+    <description>订单入库服务</description>
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>2020.0.1</spring-cloud.version>
@@ -41,6 +41,11 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>

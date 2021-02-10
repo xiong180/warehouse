@@ -12,10 +12,20 @@
     <artifactId>warehouse</artifactId>
     <version>1.0</version>
     <name>warehouse</name>
-    <description>Demo project for Spring Boot</description>
+    <description>仓库管理</description>
+    <packaging>pom</packaging>
     <properties>
         <java.version>1.8</java.version>
     </properties>
+    <modules>
+        <module>server-warehouse</module>
+        <module>server-sys</module>
+        <module>cloud-register</module>
+        <module>server-order-in</module>
+        <module>server-order-out</module>
+        <module>server-gateway</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
