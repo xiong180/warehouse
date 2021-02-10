@@ -1,6 +1,7 @@
+
 server:
-  port: 8082
-# åº”è¯¥åç§°
+  port: 8085
+# Ó¦¸ÃÃû³Æ
 spring:
   application:
     name: orderIn

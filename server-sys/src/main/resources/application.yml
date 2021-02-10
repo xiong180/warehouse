@@ -1,6 +1,6 @@
 
 server:
-  port: 8085
+  port: 8084
 # 应用名称：client
 spring:
   application:
