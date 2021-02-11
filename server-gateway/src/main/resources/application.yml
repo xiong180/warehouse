@@ -7,6 +7,13 @@ spring:
     name: gateway
   cloud:
     gateway:
+      routes:
+        id: path_route
+        uri: http://localhost:7071/auth-server/
+        filters:
+            - MyLog=true
+        predicates:
+            - Path=/auth-server/**
       discovery:
         locator:
           #自动映射eureka下的服务路由
@@ -19,6 +26,7 @@ spring:
           args:
             name: fallbackcmd
             fallbackUri: forward:/fallback
+
 
 eureka:
   client:
