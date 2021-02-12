@@ -32,6 +32,13 @@ public class LoginController {
     @Value("${secretKey:123456}")
     private String secretKey;
 
+    @Value("${userId:10086}")
+    private String userId;
+    @Value("${authName:admin}")
+    private String authName;
+    @Value("${pwd:1}")
+    private String pwd;
+
     private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
@@ -47,8 +54,7 @@ public class LoginController {
         String username = request.getUserName();
         String password = request.getPassWord();
         //  假设查询到用户ID是1001
-        String userId = "1001";
-        if ("hello".equals(username) && "world".equals(password)) {
+        if (this.authName.equals(username) && this.pwd.equals(password)) {
             //  生成Token
             String token = JwtUtil.generateToken(userId, secretKey);
 
@@ -57,9 +63,6 @@ public class LoginController {
 
             //  放入缓存
             HashOperations<String, String, String> hashOperations = stringRedisTemplate.opsForHash();
-            //            hashOperations.put(refreshToken, "token", token);
-            //            hashOperations.put(refreshToken, "user", username);
-            //            stringRedisTemplate.expire(refreshToken, JWTUtil.TOKEN_EXPIRE_TIME, TimeUnit.MILLISECONDS);
 
             /**
              * 如果可以允许用户退出后token如果在有效期内仍然可以使用的话，那么就不需要存Redis
@@ -77,7 +80,7 @@ public class LoginController {
             LoginResponse loginResponse = new LoginResponse();
             loginResponse.setToken(token);
             loginResponse.setRefreshToken(refreshToken);
-            loginResponse.setUserName(userId);
+            loginResponse.setUserName(authName);
 
             return ResponseResult.success(loginResponse);
         }
