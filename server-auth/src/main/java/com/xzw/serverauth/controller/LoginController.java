@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -86,9 +87,10 @@ public class LoginController {
 
     @GetMapping("/logout")
     public ResponseResult logout(@RequestParam("userId") String userId) {
-        HashOperations<String, String, String> hashOperations = stringRedisTemplate.opsForHash();
-        String key = userId;
-        hashOperations.delete(key);
+        Set<String> keys = stringRedisTemplate.keys(userId);
+        assert keys != null;
+        keys.forEach(System.out::println);
+        stringRedisTemplate.delete(userId);
         return ResponseResult.success();
     }
 

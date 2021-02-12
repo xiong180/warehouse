@@ -40,7 +40,7 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         String uri = serverHttpRequest.getURI().getPath();
 
         //  检查白名单（配置）
-        if (uri.contains("/auth-server/login")) {
+        if (uri.contains("/auth/auth-server/user/login")) {
             return chain.filter(exchange);
         }
 
