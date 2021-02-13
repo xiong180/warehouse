@@ -39,7 +39,7 @@ public class JwtUtil {
                 .withIssuer(ISSUER)
                 .withIssuedAt(now)
                 .withExpiresAt(expireTime)
-                .withClaim("username", username)
+                .withClaim("userId", username)
                 .sign(algorithm);
     }
 
@@ -73,7 +73,7 @@ public class JwtUtil {
      */
     public static String getUserInfo(String token) {
         DecodedJWT deCodedJwt = JWT.decode(token);
-        return deCodedJwt.getClaim("username").asString();
+        return deCodedJwt.getClaim("userId").asString();
     }
 }
 

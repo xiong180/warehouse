@@ -1,7 +1,9 @@
 package com.serversys.web.controller;
 
 import com.serversys.web.entity.User;
+import com.xzw.serverjwt.utils.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.serversys.web.dao.UserDao;
@@ -67,5 +69,16 @@ public class UserController {
     @RequestMapping("/catchException")
     public void catchException(){
         throw new NullPointerException("空指针异常了~");
+    }
+
+    /**
+     * 获取当前登录的用户
+     * @return User
+     */
+    @GetMapping("/getInfo")
+    public User getInfo(String token){
+        String userId = JwtUtil.getUserInfo(token);
+        log.info("userId:{}",userId);
+        return this.userDaoXml.getUserById(userId);
     }
 }

@@ -6,6 +6,7 @@ import com.xzw.serverauth.entity.RefreshRequest;
 import com.xzw.serverjwt.ResponseResult;
 import com.xzw.serverjwt.enums.ResponseCodeEnum;
 import com.xzw.serverjwt.utils.JwtUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,11 +29,12 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/user")
+@Slf4j
 public class LoginController {
     @Value("${secretKey:123456}")
     private String secretKey;
 
-    @Value("${userId:10086}")
+    @Value("${userId:20}")
     private String userId;
     @Value("${authName:admin}")
     private String authName;
@@ -51,8 +53,10 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             return ResponseResult.error(ResponseCodeEnum.PARAMETER_ILLEGAL.getCode(), ResponseCodeEnum.PARAMETER_ILLEGAL.getMessage());
         }
-        String username = request.getUserName();
-        String password = request.getPassWord();
+        String username = request.getUsername();
+        String password = request.getPassword();
+        log.info("账号：{}",username);
+        log.info("密码：{}",password);
         //  假设查询到用户ID是1001
         if (this.authName.equals(username) && this.pwd.equals(password)) {
             //  生成Token
@@ -78,6 +82,7 @@ public class LoginController {
             stringRedisTemplate.expire(key, JwtUtil.TOKEN_EXPIRE_TIME, TimeUnit.MILLISECONDS);
 
             LoginResponse loginResponse = new LoginResponse();
+            loginResponse.setUserId(this.userId);
             loginResponse.setToken(token);
             loginResponse.setRefreshToken(refreshToken);
             loginResponse.setUserName(authName);

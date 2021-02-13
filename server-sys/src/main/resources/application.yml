@@ -1,10 +1,10 @@
 
 server:
   port: 8084
-# 应用名称：client
+# 应用名称：sys
 spring:
   application:
-    name: client
+    name: sys
   thymeleaf:
     #prefix：指定模板所在的目录
     prefix: classpath:/templates/
