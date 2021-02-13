@@ -1,0 +1,56 @@
+package com.xzw.serverwarehouse.service;
+
+import com.xzw.serverwarehouse.entity.Warehouse;
+import java.util.List;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+/**
+ * 仓库(Warehouse)表服务接口
+ *
+ * @author makejava
+ * @since 2021-02-13 16:37:03
+ */
+public interface WarehouseService extends IService<Warehouse>{
+
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param id 主键
+     * @return 实例对象
+     */
+    Warehouse queryById(Integer id);
+
+    /**
+     * 查询多条数据
+     *
+     * @param offset 查询起始位置
+     * @param limit 查询条数
+     * @return 对象列表
+     */
+    List<Warehouse> queryAllByLimit(int offset, int limit);
+
+    /**
+     * 新增数据
+     *
+     * @param warehouse 实例对象
+     * @return 实例对象
+     */
+    Warehouse insert(Warehouse warehouse);
+
+    /**
+     * 修改数据
+     *
+     * @param warehouse 实例对象
+     * @return 实例对象
+     */
+    Warehouse update(Warehouse warehouse);
+
+    /**
+     * 通过主键删除数据
+     *
+     * @param id 主键
+     * @return 是否成功
+     */
+    boolean deleteById(Integer id);
+
+}

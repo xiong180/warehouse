@@ -55,7 +55,7 @@ public class GeneratorCodeConfig {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:sqlserver://localhost:1433;DatabaseName=ckdata");
+        dsc.setUrl("jdbc:sqlserver://localhost:1433;DatabaseName=wareHouse");
         dsc.setDriverName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         dsc.setUsername("sa");
         dsc.setPassword("root123");

@@ -7,7 +7,7 @@ spring:
     name: warehouse
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:sqlserver://localhost:1433;DatabaseName=ckdata
+    url: jdbc:sqlserver://localhost:1433;DatabaseName=warwhouse
     username: sa
     password: root123
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
